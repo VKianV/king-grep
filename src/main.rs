@@ -1,5 +1,5 @@
-use king_grep::Config;
-use std::{env, fs, process};
+use king_grep::{Config, run};
+use std::{env, process};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -11,8 +11,5 @@ fn main() {
     println!("Searching for {}", config.query);
     println!("In file {}", config.file_path);
 
-    let contents =
-        fs::read_to_string(config.file_path).expect("Should have been able to read the file");
-
-    println!("With text:\n{contents}");
+    run(config);
 }
