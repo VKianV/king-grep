@@ -1,4 +1,4 @@
-use king_grep::{Config, run};
+use king_grep::Config;
 use std::{env, process};
 
 fn main() {
@@ -11,5 +11,8 @@ fn main() {
     println!("Searching for {}", config.query);
     println!("In file {}", config.file_path);
 
-    run(config);
+    if let Err(e) = king_grep::run(config) {
+        println!("Application error: {e}");
+        process::exit(1);
+    }
 }
