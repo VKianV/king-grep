@@ -10,7 +10,7 @@ pub struct Config {
 impl Config {
     pub fn build(args: &[String]) -> Result<Self, &'static str> {
         if args.len() < 3 {
-            return Err("not enough arguments");
+            return Err("not enough arguments!");
         }
 
         let (query, file_path, ignore_case) = (
