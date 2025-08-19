@@ -8,17 +8,18 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+    pub fn build(args: &[String]) -> Result<Self, &'static str> {
         if args.len() < 3 {
             return Err("not enough arguments");
         }
 
-        let query = args[1].clone();
-        let file_path = args[2].clone();
+        let (query, file_path, ignore_case) = (
+            args[1].clone(),
+            args[2].clone(),
+            env::var("IGNORE_CASE").is_ok(),
+        );
 
-        let ignore_case = env::var("IGNORE_CASE").is_ok();
-
-        Ok(Config {
+        Ok(Self {
             query,
             file_path,
             ignore_case,
