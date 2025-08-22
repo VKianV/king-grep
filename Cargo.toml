@@ -2,7 +2,7 @@
 name = "king-grep"
 version = "0.1.0"
 edition = "2024"
-licence = "MIT"
-desctiption = " my home made grep softwrae"
+license = "MIT"
+description = " my home made grep softwrae"
 
 [dependencies]
